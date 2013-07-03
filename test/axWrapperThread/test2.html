@@ -1,0 +1,61 @@
+<!-- saved from url=(0013)about:internet -->
+<!-- The above comment makes IE treat this as a web page -->
+<html>
+<head>
+
+    <title>test page for object axWrapper</title>
+
+    <script type="text/javascript">
+
+    function addEvent(obj, name, func)
+    {
+        if(obj.attachEvent)
+        { obj.attachEvent('on'+name, func); }
+        else if(obj.addEventListener)
+        { obj.addEventListener(name, func, false); }
+        else { alert("failed to attach event"); }
+    }
+
+    function handleClick()
+    {
+        // When the top button is clicked, this function swaps the
+        // button caption property between the top & bottom buttons.
+        // Then it calls the FireClick event on the bottom button,
+        // which visually shows the bottom button being pressed and
+        // then released.
+        window.location.href="http://www.yahoo.com";
+    }
+
+    function attachEvents(obj)
+    {
+        // Attach event handlers for Click & KeyPress events.
+
+        addEvent(obj, 'click', handleClick);
+    }
+
+    </script>
+</head>
+<body>
+
+<h3>Firebreath ActiveX Wrapper (thread) Example - Test page</h3>
+
+<!-- The top button is a Firebreath plugin object that wraps
+     an ActiveX UserControl which simulates a command button.
+     The 'onload' param is assigned to the 'attachEvents'
+     function to connect the Click & KeyPress plugin events
+     to Javascript event handlers. The 'caption' and 'theme'
+     params are used to initialize the corresponding ActiveX
+     control properties.
+-->
+
+<p>
+<object id="xpcmd1" type="application/x-fbaxwrapperthreadexample" 
+style="width:400px; height:50px;" tabindex="1">
+<param name="onload" value="attachEvents" />
+<param name="caption" value="Click to go to Yahoo" />
+<param name="theme" value="0" />
+</object> 
+</p>
+
+</body>
+</html>
